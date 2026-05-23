@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.UUID;
 
-// @Entity fala para o Spring transformar a classe em tabela
+// classe vira tabela
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -18,7 +18,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    // @NotBlank não deixa o usuário deixar o campo vazio ou só com espaços
+    // nada de campos vazios
     @NotBlank(message = "o nome é obrigatório")
     @Column(nullable = false)
     private String nome;
@@ -32,7 +32,7 @@ public class Cliente {
     @Column(nullable = false, unique = true)
     private String cpf;
 
-    // @Email tem q validar se tem o formato certo
+
     @NotBlank(message = "O e-mail é obrigatório")
     @Email(message = "Formato de e-mail errado")
     @Column(nullable = false)

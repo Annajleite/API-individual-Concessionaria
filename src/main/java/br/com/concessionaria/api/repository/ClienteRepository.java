@@ -11,9 +11,9 @@ import java.util.UUID;
 public interface ClienteRepository extends JpaRepository<Cliente, UUID> {
 
 
-    // Opcional significa que a busca pode ou não encontrar o cliente
+
     Optional<Cliente> findByCpf(String cpf);
 
-    // Containig busca um nome que pode estar atrelado a outro, tipo: procurei Almeida, e aparece Anna Almeida :)
+    // Containig busca um nome que pode estar atrelado a outro, tipo: procurei Almeida, e aparece Anna Almeida :) nome bonitinho esse viu
     java.util.List<Cliente> findByNomeContainingIgnoreCase(String nome);
 }

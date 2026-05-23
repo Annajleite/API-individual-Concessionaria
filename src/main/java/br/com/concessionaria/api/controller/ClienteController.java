@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.*;
         import java.util.List;
 import java.util.UUID;
 
-// @RestController avisa o Spring de que esta classe recebe requisições da internet (formato JSON)
 @RestController
-// @RequestMapping define o caminho da URL (exatamente como está no teu Swagger)
+
 @RequestMapping("/api/v1/cliente")
 public class ClienteController {
 
-    // @Autowired liga o controller ao service
     @Autowired
     private ClienteService clienteService;
 
@@ -27,7 +25,7 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<Cliente> cadastrar(@Valid @RequestBody ClienteInput input) {
         Cliente clienteSalvo = clienteService.cadastrar(input);
-        // Retorna o status 201  e dados do cliente salvo
+
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
     }
 
@@ -42,7 +40,7 @@ public class ClienteController {
         } else if (nome != null) {
             return ResponseEntity.ok(clienteService.buscarPorNome(nome));
         } else {
-            // Se não enviou nenhum filtro, lista todos!
+
             return ResponseEntity.ok(clienteService.listarTodos());
         }
     }
@@ -50,7 +48,7 @@ public class ClienteController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable UUID id) {
         clienteService.remover(id);
-        // Retorna o status 204
+
         return ResponseEntity.noContent().build();
     }
 }

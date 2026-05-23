@@ -13,7 +13,7 @@ import java.util.UUID;
 @Service
 public class ClienteService {
 
-    // @Autowired repositório pra poder usar os métodos de banco de dados
+    //  repositório pra poder usar os métodos de banco de dados
     @Autowired
     private ClienteRepository clienteRepository;
 
